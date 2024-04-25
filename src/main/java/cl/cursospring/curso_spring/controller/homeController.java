@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class homeController {
 
     @Value("${curso.spring.ejemplo}")
@@ -33,7 +33,7 @@ public class homeController {
         return "producto="+id;
     }
 
-    // Para pasar parametros a una url a traves de querystring --> =?nombre=juan&apellido=perez
+    // Para pasar parametros a una url a traves de querystring --> ?nombre=juan&apellido=perez
     @GetMapping("/query-string")
     @ResponseBody
     public String query(@RequestParam("id") int id){
