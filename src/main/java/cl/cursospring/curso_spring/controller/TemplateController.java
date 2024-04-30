@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
 @Controller
 @RequestMapping("/template")
 public class TemplateController {
@@ -47,5 +48,9 @@ public class TemplateController {
         return "template/parametros";
     }
     
+    @GetMapping("/estaticos")
+    public String estaticos(Model model) {
+        return "template/estatico";
+    }
     
 }
