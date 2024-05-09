@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="layout/frontend :: head(~{::title}, ~{::link})"></head>
+<body>
+    <h1>Formulario objeto 2</h1>
+
+    <form name="form" th:object="${usuario}" th:action="@{objeto2}" method="post">
+        <label>username</label>
+        <input type="text" th:field="*{username}" id="username"/>
+        <label>password</label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <button onclick="document.form.submit()">Enviar</button>
+    </form>
+
+    <footer th:replace="layout/frontend :: footer" class="container"></footer>
+
+</body>
+</html>
