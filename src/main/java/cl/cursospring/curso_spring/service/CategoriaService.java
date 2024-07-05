@@ -18,4 +18,8 @@ public class CategoriaService {
 
         return this.repository.findAll();
     }
+
+    public void guardar(CategoriaModel categoria){
+        this.repository.save(categoria);
+    }
 }
