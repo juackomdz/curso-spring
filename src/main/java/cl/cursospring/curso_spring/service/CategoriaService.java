@@ -1,6 +1,7 @@
 package cl.cursospring.curso_spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,13 @@ public class CategoriaService {
 
     public void guardar(CategoriaModel categoria){
         this.repository.save(categoria);
+    }
+
+    public CategoriaModel buscarId(Integer id){
+        Optional<CategoriaModel> opt = this.repository.findById(id);
+        if(opt.isPresent()){
+            return opt.get();
+        }
+        return null;
     }
 }

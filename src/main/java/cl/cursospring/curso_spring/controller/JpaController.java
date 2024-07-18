@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import cl.cursospring.curso_spring.model.CategoriaModel;
@@ -45,5 +46,19 @@ private CategoriaService service;
         return "jparepository/categorias_add";
         
     }
+
+    @GetMapping("/categorias/edit/{id}")
+    public String categorias_edit(@PathVariable("id") Integer id, Model model) {
+        CategoriaModel cate = this.service.buscarId(id);
+        model.addAttribute("categoria", cate);
+        return "jparepository/categorias_editar";
+    }
     
+    @PostMapping("categorias/edit/{id}")
+    public String categorias_edit_post(@PathVariable("id") Integer id, Model model, CategoriaModel cate) {
+        model.addAttribute("categoria", cate);
+        this.service.guardar(cate);
+        return "jparepository/categorias_editar";
+    }
+
 }
