@@ -87,6 +87,9 @@
             <tr th:each="dato:${datos}">
                 <td th:text="${dato.id}"></td>
                 <td th:text="${dato.nombre}"></td>
+                <td>
+                  <a th:href="@{/jpa-repository/categorias/delete/}+${dato.id}">eliminar</a>
+                </td>
             </tr>
         </tbody>
     </table>

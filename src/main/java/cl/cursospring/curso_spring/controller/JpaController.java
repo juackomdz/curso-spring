@@ -61,4 +61,14 @@ private CategoriaService service;
         return "jparepository/categorias_editar";
     }
 
+    @GetMapping("categorias/delete/{id}")
+    public String categorias_delete(@PathVariable("id") Integer id){
+        
+        try {
+            this.service.eliminar(id);
+            return "jparepository/categorias";
+        } catch (Exception e) {
+            return "jparepository/categorias";
+        }
+    }
 }

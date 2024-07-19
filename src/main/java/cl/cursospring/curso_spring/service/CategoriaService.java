@@ -31,4 +31,8 @@ public class CategoriaService {
         }
         return null;
     }
+
+    public void eliminar(Integer id){
+        this.repository.deleteById(id);
+    }
 }
