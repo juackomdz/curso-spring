@@ -1,11 +1,17 @@
 package cl.cursospring.curso_spring.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import cl.cursospring.curso_spring.model.EjemploModel;
+
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -18,10 +24,30 @@ public class apicontroller {
         return "Hola Mundo get desde api";
     }
 
+    @GetMapping("/hola/{id}")
+    public String holaconparametro(@PathVariable("id") String id){
+        return "Hola Mundo con parametro ="+id;
+    }
+
     @PostMapping("/hola")
     public String holaMundopost(){
         return "Hola Mundo post desde api";  
     }
+
+    /* 
+    {
+    "nombre":"juan",
+    "apellido":"perez",
+    "descripcion":"jefe",
+    "precio":200
+    }
+*/
+
+    @PostMapping("/metodo-json")
+    public String metodo_json(@RequestBody EjemploModel req){
+        return "datos= "+req.getNombre()+" "+req.getApellido();
+    }
+
 
     @PutMapping("/hola")
     public String holamundoput() {
@@ -32,4 +58,17 @@ public class apicontroller {
     public String holaMundodelete(){
         return "Hola Mundo delete desde api";       
     }
+
+
+    @GetMapping("/response")
+    public ResponseEntity<String> respuesta(){
+        return ResponseEntity.ok("Hola Mundo response");
+    }
+
+    /*
+    @GetMapping("/response-json")
+    public ResponseEntity<EjemploModel> respuesta_json(@RequestBody EjemploModel request){
+        return "";
+    }
+    */
 }
