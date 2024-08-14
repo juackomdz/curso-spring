@@ -1,5 +1,6 @@
 package cl.cursospring.curso_spring.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.cursospring.curso_spring.model.EjemploModel;
+import cl.cursospring.curso_spring.utilidades.Utilidades;
 
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -65,10 +67,10 @@ public class apicontroller {
         return ResponseEntity.ok("Hola Mundo response");
     }
 
-    /*
-    @GetMapping("/response-json")
-    public ResponseEntity<EjemploModel> respuesta_json(@RequestBody EjemploModel request){
-        return "";
+    
+    @GetMapping("/response-custom")
+    public ResponseEntity<Object> respuesta_json(){
+        return Utilidades.generateResponse(HttpStatus.OK, "response custom");
     }
-    */
+    
 }
