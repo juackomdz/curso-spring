@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.cursospring.curso_spring.model.CategoriaModel;
+import cl.cursospring.curso_spring.model.ProductosModel;
 import cl.cursospring.curso_spring.service.CategoriaService;
+import cl.cursospring.curso_spring.service.ProductoService;
 import cl.cursospring.curso_spring.utilidades.Utilidades;
 
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -26,6 +29,10 @@ public class bdController {
 
     @Autowired
     private CategoriaService categoriaservice;
+
+    @Autowired
+    private ProductoService productoService;
+
 
     @GetMapping("/get-categoria")
     public List<CategoriaModel>  getCategorias() {
@@ -73,4 +80,10 @@ public class bdController {
        }
         
     }
+
+    @GetMapping("/get-producto")
+    public List<ProductosModel> producto_get() {
+        return productoService.listarProductos();
+    }
+    
 }
