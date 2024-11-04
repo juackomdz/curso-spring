@@ -43,7 +43,7 @@ public class formulario {
     @ResponseBody
     public String objetoPost(UsuarioModel modelo) {
 
-        return "<h1>Objeto</h1>hola "+modelo.getUsername()+" password: "+modelo.getPassword();
+        return "<h1>Objeto</h1>hola "+modelo.getUsername()+" password: "+modelo.getPass();
     }
 
     @GetMapping("/objeto2")
@@ -56,7 +56,7 @@ public class formulario {
     @ResponseBody
     public String objeto2Post(UsuarioModel modelo) {
         
-        return "<h1>Objeto 2</h1>hola "+modelo.getUsername()+" password: "+modelo.getPassword();
+        return "<h1>Objeto 2</h1>hola "+modelo.getUsername()+" password: "+modelo.getPass();
     }
     //---------------------------------------------------
 }

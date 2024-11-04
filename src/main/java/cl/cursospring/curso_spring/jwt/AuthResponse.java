@@ -2,23 +2,27 @@ package cl.cursospring.curso_spring.jwt;
 
 public class AuthResponse {
 
-    private String correo;
+    private String user;
     private String token;
     
+
     public AuthResponse() {
     }
 
-    public AuthResponse(String correo, String token) {
-        this.correo = correo;
+
+    public AuthResponse(String user, String token) {
+        this.user = user;
         this.token = token;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getUser() {
+        return user;
     }
-    public void setCorreo(String correo) {
-        this.correo = correo;
+
+    public void setUser(String user) {
+        this.user = user;
     }
+
     public String getToken() {
         return token;
     }

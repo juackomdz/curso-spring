@@ -2,19 +2,19 @@ package cl.cursospring.curso_spring.jwt;
 
 public class AuthRequest {
 
-    private String correo;
+    private String username;
     private String pass;
 
-    public String getCorreo() {
-        return correo;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPass() {
         return pass;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public void setPass(String pass) {
