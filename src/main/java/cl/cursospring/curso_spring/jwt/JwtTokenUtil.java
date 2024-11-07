@@ -1,6 +1,5 @@
 package cl.cursospring.curso_spring.jwt;
 
-import java.security.Key;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
@@ -13,7 +12,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -23,12 +21,7 @@ import io.jsonwebtoken.security.SignatureException;
 public class JwtTokenUtil {
 
     private static final long EXPIRATE_DURATION = 24*60*60*1000;
-    private static final String SECRET= "SG9sYSBNdW5kbyB1dGlsaXphbmRvIFNwcmluZyBib290IHkgU3ByaW5nIFNlY3VyaXR5";
-    /* 
-    public boolean validateAccessToken(String token){
 
-    }
-*/
 
     public boolean validateAccessToken(String token){
         try {
@@ -49,7 +42,7 @@ public class JwtTokenUtil {
     }
 
     private SecretKey getSignKey(){
-        byte[] keysByte = Decoders.BASE64.decode(SECRET);
+        byte[] keysByte = Decoders.BASE64.decode(Constantes.SECRET);
         return Keys.hmacShaKeyFor(keysByte);
     }
     //muchas clases deprecadas
@@ -75,27 +68,6 @@ public class JwtTokenUtil {
             .build()
             .parseSignedClaims(token)
             .getPayload();
-
     }
-
-    /* 
-        // Método de ejemplo para uso
-        public static void main(String[] args) {
-            // Crear claims
-            Claims claims = Jwts.claims().setSubject("usuario@example.com");
-            claims.put("role", "admin");
-    
-            // Generar un token
-            String token = generateToken(claims);
-            System.out.println("Token generado: " + token);
-    
-            // Parsear el token
-            Claims parsedClaims = parseClaims(token);
-            if (parsedClaims != null) {
-                System.out.println("Claims parseados: " + parsedClaims);
-            }
-        }
-
-*/
     
 }
