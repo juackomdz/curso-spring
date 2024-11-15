@@ -51,7 +51,9 @@ public class Seguridad {
             //res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/login").permitAll().anyRequest().authenticated())
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/login").permitAll()
+            .requestMatchers("/api/mongodb/**").permitAll()
+            .requestMatchers("/jpa-repository/**").permitAll().anyRequest().authenticated())
             .exceptionHandling(exHandling -> exHandling.authenticationEntryPoint((req, res, ex) ->
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED)));
         
