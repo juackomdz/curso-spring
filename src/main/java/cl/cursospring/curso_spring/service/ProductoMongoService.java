@@ -17,4 +17,8 @@ public class ProductoMongoService {
     public List<ProductoMongoModel> listar(){
         return repository.findAll();
     }
+
+    public void guardar(ProductoMongoModel producto){
+        repository.save(producto);
+    }
 }

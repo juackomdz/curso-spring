@@ -1,6 +1,7 @@
 package cl.cursospring.curso_spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,17 @@ public class CategoriaMongoService {
 
     public void guardar(CategoriaMongoModel categoria){
         categoriaMongoRepository.save(categoria);
+    }
+
+    public CategoriaMongoModel buscarPorNombre(String nombre){
+        Optional<CategoriaMongoModel> opt = categoriaMongoRepository.findByNombre(nombre);
+        if (opt.isPresent()) {
+            return opt.get();
+        }
+        return null;
+    }
+
+    public void eliminar(String nombre){
+        categoriaMongoRepository.deleteByNombre(nombre);
     }
 }
