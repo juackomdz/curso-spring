@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
+
 @RestController
 @RequestMapping("/api/mongodb")
 public class mongoController {
@@ -91,4 +92,37 @@ public class mongoController {
         return Utilidades.generateResponse(HttpStatus.CREATED, "Creado con exito");
     }
     
+    @GetMapping("/productos")
+    public List<ProductoMongoModel> listar_productos() {
+        return productoService.listar();
+    }
+    
+    @PutMapping("/edit-producto/{nombre}")
+    public ResponseEntity<Object> editar_producto(@PathVariable("nombre") String nombre, @RequestBody ProductoMongoModel entity) {
+       try {
+            ProductoMongoModel produ = productoService.buscarPorNombre(nombre);
+            produ.setDescripcion(entity.getDescripcion());
+            produ.setPrecio(entity.getPrecio());
+            produ.setSlug(entity.getSlug());
+            produ.setFoto(entity.getFoto());
+
+            productoService.guardar(produ);
+
+            return Utilidades.generateResponse(HttpStatus.OK, "Editado con exito");
+       } catch (Exception e) {
+             return Utilidades.generateResponse(HttpStatus.BAD_REQUEST, "No se pudo editar");
+       }
+        
+        
+    }
+
+    @DeleteMapping("/delete-producto/{nombre}")
+    public ResponseEntity<Object> eliminar_producto(@PathVariable("nombre") String nombre) {
+        try {
+            productoService.eliminar(nombre);
+            return ResponseEntity.ok("Eliminado con exito");
+            } catch (Exception e) {
+                return Utilidades.generateResponse(HttpStatus.BAD_REQUEST, "No se pudo eliminar");
+        }
+    }
 }
