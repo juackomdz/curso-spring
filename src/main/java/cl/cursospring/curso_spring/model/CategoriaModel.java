@@ -16,6 +16,23 @@ public class CategoriaModel {
     private String nombre;
     private String slug;
 
+    
+    public CategoriaModel() {
+    }
+
+    
+    public CategoriaModel(String nombre, String slug) {
+        this.nombre = nombre;
+        this.slug = slug;
+    }
+
+
+    public CategoriaModel(Integer id, String nombre, String slug) {
+        this.id = id;
+        this.nombre = nombre;
+        this.slug = slug;
+    }
+
     public Integer getId() {
         return id;
     }
