@@ -1,6 +1,12 @@
 package cl.cursospring.curso_spring.misPruebas;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +31,23 @@ public class categoriaPruebas {
         CategoriaModel guardar = this.repositorio.save(new CategoriaModel("categoria prueba","slug prueba"));
         System.out.println(guardar.getId());
         assertNotNull(guardar);
+    }
+
+    @Test
+    public void buscarCategoria(){
+        Integer idCategoria = 11;
+        Optional<CategoriaModel> categoria = this.repositorio.findById(idCategoria);
+
+        //assertEquals(idCategoria, categoria.get().getId());
+
+        assertTrue(categoria.isPresent());
+    }
+
+    @Test
+    public void buscarCategoriaNull(){
+        Integer idCategoria = 2;
+        Optional<CategoriaModel> categoria = this.repositorio.findById(idCategoria);
+
+        assertFalse(categoria.isPresent());
     }
 }
