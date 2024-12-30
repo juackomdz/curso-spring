@@ -48,6 +48,7 @@ public class accessController {
      * 
      */
 
+    
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest req) {
         try {
@@ -69,7 +70,6 @@ public class accessController {
 
         }
     }
-    
 
     /* {
         "id":"6",

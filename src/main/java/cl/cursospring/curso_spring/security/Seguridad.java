@@ -24,7 +24,15 @@ public class Seguridad {
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
 
+    private static final String[] WHITE_LIST = {
+        "/swagger-ui/**",
+        "/v3/api-docs/**",
+        "/swagger-resources/**",
+        "/swagger-resources",
+        "/swagger-ui.html"
+    };
 
+    
     @Bean
     public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authConfiguration) throws Exception {
         return authConfiguration.getAuthenticationManager();
@@ -53,6 +61,8 @@ public class Seguridad {
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/login").permitAll()
             .requestMatchers("/api/mongodb/**").permitAll()
+            .requestMatchers("/v2/**").permitAll()
+            .requestMatchers(WHITE_LIST).permitAll()
             .requestMatchers("/jpa-repository/**").permitAll().anyRequest().authenticated())
             .exceptionHandling(exHandling -> exHandling.authenticationEntryPoint((req, res, ex) ->
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED)));
