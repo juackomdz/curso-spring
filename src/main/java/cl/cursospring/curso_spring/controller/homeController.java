@@ -33,14 +33,14 @@ public class homeController {
 
     @GetMapping("/producto/{id}")
     @ResponseBody
-    public String producto(@PathVariable("id")  int id){
+    public String producto(@PathVariable  int id){
         return "producto="+id;
     }
 
     // Para pasar parametros a una url a traves de querystring --> ?nombre=juan&apellido=perez
     @GetMapping("/query-string")
     @ResponseBody
-    public String query(@RequestParam("id") int id){
+    public String query(@RequestParam int id){
         return "producto="+id;
     }
 

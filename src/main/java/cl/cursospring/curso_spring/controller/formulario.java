@@ -28,7 +28,7 @@ public class formulario {
     
     @PostMapping("/home")
     @ResponseBody
-    public String homePost(@RequestParam(name = "username")String username, @RequestParam(name = "password")String pass) {
+    public String homePost(@RequestParam String username, @RequestParam(name = "password")String pass) {
 
         return "hola "+username+" tu password es: "+pass;
     }

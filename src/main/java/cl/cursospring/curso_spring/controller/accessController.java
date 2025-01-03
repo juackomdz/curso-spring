@@ -42,7 +42,7 @@ public class accessController {
      * {"user":"alan brito","pass":"54321"}
      * 
      * {
-    "user":"alan brito",
+    "username":"alan brito",
     "pass":"54321"
     }
      * 

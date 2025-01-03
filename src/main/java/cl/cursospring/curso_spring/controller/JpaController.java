@@ -48,21 +48,21 @@ private CategoriaService service;
     }
 
     @GetMapping("/categorias/edit/{id}")
-    public String categorias_edit(@PathVariable("id") Integer id, Model model) {
+    public String categorias_edit(@PathVariable Integer id, Model model) {
         CategoriaModel cate = this.service.buscarId(id);
         model.addAttribute("categoria", cate);
         return "jparepository/categorias_editar";
     }
     
     @PostMapping("categorias/edit/{id}")
-    public String categorias_edit_post(@PathVariable("id") Integer id, Model model, CategoriaModel cate) {
+    public String categorias_edit_post(@PathVariable Integer id, Model model, CategoriaModel cate) {
         model.addAttribute("categoria", cate);
         this.service.guardar(cate);
         return "jparepository/categorias_editar";
     }
 
     @GetMapping("categorias/delete/{id}")
-    public String categorias_delete(@PathVariable("id") Integer id){
+    public String categorias_delete(@PathVariable Integer id){
         
         try {
             this.service.eliminar(id);

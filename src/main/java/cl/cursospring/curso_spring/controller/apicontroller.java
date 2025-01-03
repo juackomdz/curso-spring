@@ -27,7 +27,7 @@ public class apicontroller {
     }
 
     @GetMapping("/hola/{id}")
-    public String holaconparametro(@PathVariable("id") String id){
+    public String holaconparametro(@PathVariable String id){
         return "Hola Mundo con parametro ="+id;
     }
 

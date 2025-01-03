@@ -40,7 +40,7 @@ public class bdController {
     }
 
     @GetMapping("/get-categoria/{id}")
-    public CategoriaModel getCategoria(@PathVariable("id") Integer id) {
+    public CategoriaModel getCategoria(@PathVariable Integer id) {
         return categoriaservice.buscarId(id);
     }
 
@@ -58,7 +58,7 @@ public class bdController {
     }
 
     @PutMapping("/edit-categoria/{id}")
-    public ResponseEntity<Object> categoria_put(@PathVariable("id") Integer id, @RequestBody CategoriaModel entity){
+    public ResponseEntity<Object> categoria_put(@PathVariable Integer id, @RequestBody CategoriaModel entity){
         CategoriaModel cate = this.categoriaservice.buscarId(id);
 
         cate.setNombre(entity.getNombre());
@@ -70,7 +70,7 @@ public class bdController {
     }
 
     @DeleteMapping("/delete-categoria/{id}")
-    public ResponseEntity<Object> categoria_delete(@PathVariable("id") Integer id) {
+    public ResponseEntity<Object> categoria_delete(@PathVariable Integer id) {
        
        try {
             categoriaservice.eliminar(id);

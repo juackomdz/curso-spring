@@ -32,19 +32,19 @@ public class Seguridad {
         "/swagger-ui.html"
     };
 
-    
+
     @Bean
-    public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authConfiguration) throws Exception {
+    AuthenticationManager authenticationManagerBean(AuthenticationConfiguration authConfiguration) throws Exception {
         return authConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         /*
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(req -> req.anyRequest().permitAll());

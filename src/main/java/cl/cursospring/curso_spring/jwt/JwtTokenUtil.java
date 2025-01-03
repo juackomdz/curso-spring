@@ -48,7 +48,7 @@ public class JwtTokenUtil {
     //muchas clases deprecadas
     public String generateToken(UsuarioModel usuario) {
         return Jwts.builder()
-        .subject(String.format("%s,%s", usuario.getId(), usuario.getUsername()))
+        .subject("%s,%s".formatted(usuario.getId(), usuario.getUsername()))
         .issuer("SPRING")
         .issuedAt(new Date())
         .expiration(new Date(System.currentTimeMillis() + EXPIRATE_DURATION))

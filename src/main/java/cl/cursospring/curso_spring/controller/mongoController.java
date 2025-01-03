@@ -64,7 +64,7 @@ public class mongoController {
     }
 
     @DeleteMapping("/delete/{nombre}")
-    public ResponseEntity<Object> eliminar_categoria(@PathVariable("nombre") String nombre) {
+    public ResponseEntity<Object> eliminar_categoria(@PathVariable String nombre) {
        try {
             service.eliminar(nombre);
             return ResponseEntity.ok("Eliminado con exito");
@@ -98,7 +98,7 @@ public class mongoController {
     }
     
     @PutMapping("/edit-producto/{nombre}")
-    public ResponseEntity<Object> editar_producto(@PathVariable("nombre") String nombre, @RequestBody ProductoMongoModel entity) {
+    public ResponseEntity<Object> editar_producto(@PathVariable String nombre, @RequestBody ProductoMongoModel entity) {
        try {
             ProductoMongoModel produ = productoService.buscarPorNombre(nombre);
             produ.setDescripcion(entity.getDescripcion());
@@ -117,7 +117,7 @@ public class mongoController {
     }
 
     @DeleteMapping("/delete-producto/{nombre}")
-    public ResponseEntity<Object> eliminar_producto(@PathVariable("nombre") String nombre) {
+    public ResponseEntity<Object> eliminar_producto(@PathVariable String nombre) {
         try {
             productoService.eliminar(nombre);
             return ResponseEntity.ok("Eliminado con exito");
