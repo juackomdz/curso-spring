@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cl.cursospring.curso_spring.model.UsuarioModel;
+import io.swagger.v3.oas.annotations.Hidden;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
+@Hidden
 @RequestMapping("/formulario")
 public class formulario {
 
