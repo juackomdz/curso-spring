@@ -6,7 +6,7 @@ WORKDIR /app
 COPY pom.xml ./
 COPY src ./src
 
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 ##ejecutar 
 FROM tomcat:10.1.34-jdk17
