@@ -3,8 +3,7 @@ FROM maven:3-amazoncorretto-17-alpine as builder
 
 WORKDIR /app
 
-COPY pom.xml ./
-COPY src ./src
+COPY . .
 
 RUN mvn clean package -DskipTests
 
@@ -15,9 +14,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
-EXPOSE 10000
+EXPOSE 8080
 
 CMD [ "catalina.sh", "run" ]
-
-#ENTRYPOINT [ "catalina,sh", "run" ]
 
