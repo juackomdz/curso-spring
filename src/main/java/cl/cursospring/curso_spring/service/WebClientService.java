@@ -3,7 +3,6 @@ package cl.cursospring.curso_spring.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import cl.cursospring.curso_spring.model.PostsDTO;
 import cl.cursospring.curso_spring.model.ResponseWebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

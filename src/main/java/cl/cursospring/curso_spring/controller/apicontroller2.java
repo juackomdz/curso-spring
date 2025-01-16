@@ -3,8 +3,6 @@ package cl.cursospring.curso_spring.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.cursospring.curso_spring.model.PostsDTO;
-import cl.cursospring.curso_spring.model.ResponseWageModel;
 import cl.cursospring.curso_spring.model.ResponseWebClient;
 import cl.cursospring.curso_spring.service.WebClientService;
 import reactor.core.publisher.Flux;
