@@ -9,7 +9,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 ##ejecutar 
-FROM tomcat:10.1.34-jdk17
+FROM tomcat:9-jdk17-openjdk
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
