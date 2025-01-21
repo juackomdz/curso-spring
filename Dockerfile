@@ -1,5 +1,5 @@
 ##compilar
-FROM maven:3-amazoncorretto-17-alpine as builder
+FROM maven:3-amazoncorretto-17-alpine AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 ##ejecutar 
-FROM tomcat:9-jdk17-openjdk
+FROM tomcat:10-jdk17-openjdk-slim
 ##FROM openjdk:17-alpine
 RUN rm -rf /usr/local/tomcat/webapps/*
 
