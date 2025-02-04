@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import cl.cursospring.curso_spring.model.ResponseWebClient;
+import cl.cursospring.curso_spring.model.ResponseWebClientDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -24,5 +25,13 @@ public class WebClientService {
 
     public Mono<ResponseWebClient> postTodo(ResponseWebClient res){
         return client.post().uri("/todos").bodyValue(res).retrieve().bodyToMono(ResponseWebClient.class);
+    }
+
+    public ResponseWebClientDTO get(){
+        ResponseWebClientDTO respuesta = client.get().uri("/todos/1").retrieve().bodyToMono(ResponseWebClientDTO.class).block();
+        respuesta.setExtra("asdfggg");
+        System.out.println("valor="+respuesta);
+
+        return respuesta;
     }
 }
